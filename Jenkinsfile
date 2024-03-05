@@ -12,8 +12,7 @@ pipeline {
             IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
             IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
 	        JENKINS_API_TOKEN = credentials("JENKINS_API_TOKEN")
-            JENKINS_URL = 'http://34.87.133.46:8080'
-            JENKINS_USERNAME = 'chandrajenkinsadmin'
+            
     }
     stages{
         stage("Cleanup Workspace"){
@@ -100,18 +99,6 @@ pipeline {
                 }
             }
        }
-
-    
-        // stage('Build Trigger CD Automate') {
-        //     steps {
-        //        script {
-        //             sh '''
-        //                 curl -v -k --user "${JENKINS_USERNAME}:${JENKINS_API_TOKEN}" -X POST -H "cache-control: no-cache" "${JENKINS_URL}/job/gitops-register-app-cd/buildWithParameters?token=gitops-token"
-        //             '''
-        //         }
-        //     }
-        // }
-   
 
 //     post {
 //        failure { 
