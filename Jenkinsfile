@@ -104,8 +104,7 @@ pipeline {
     
         stage('Build Trigger CD Automate') {
             steps {
-                // Use credentials binding to securely inject API token
-                withCredentials([usernamePassword(credentialsId: 'JENKINS_API_TOKEN', usernameVariable: 'JENKINS_USERNAME', passwordVariable: 'JENKINS_API_TOKEN')]) {
+               script {
                     sh '''
                         curl -v -k --user "${JENKINS_USERNAME}:${JENKINS_API_TOKEN}" -X POST -H "cache-control: no-cache" "${JENKINS_URL}/job/gitops-register-app-cd/buildWithParameters?token=gitops-token"
                     '''
