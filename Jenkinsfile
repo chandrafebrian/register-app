@@ -12,8 +12,8 @@ pipeline {
             IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
             IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
 	        JENKINS_API_TOKEN = credentials("JENKINS_API_TOKEN")
-            // JENKINS_URL = 'http://34.87.133.46:8080'
-            // JENKINS_USERNAME = 'chandrajenkinsadmin'
+            JENKINS_URL = 'http://34.87.133.46:8080'
+            JENKINS_USERNAME = 'chandrajenkinsadmin'
     }
     stages{
         stage("Cleanup Workspace"){
@@ -93,26 +93,26 @@ pipeline {
           }
        }
 
-       stage("Trigger CD Automate Pipeline") {
-            steps {
-                script {
-                    sh "curl -v -k --user chandrajenkinsadmin:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H '34.87.133.46:8080/job/gitops-register-app-cd/buildWithParameters?token=gitops-token'"
-                }
-            }
-       }
-
-    // stages {
-    //     stage('Build') {
+    //    stage("Trigger CD Automate Pipeline") {
     //         steps {
-    //             // Use credentials binding to securely inject API token
-    //             withCredentials([usernamePassword(credentialsId: 'JENKINS_API_TOKEN', usernameVariable: 'JENKINS_USERNAME', passwordVariable: 'JENKINS_API_TOKEN')]) {
-    //                 sh '''
-    //                     curl -v -k --user "${JENKINS_USERNAME}:${JENKINS_API_TOKEN}" -X POST -H "cache-control: no-cache" "${JENKINS_URL}/job/gitops-register-app-cd/buildWithParameters?token=gitops-token"
-    //                 '''
+    //             script {
+    //                 sh "curl -v -k --user chandrajenkinsadmin:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H '34.87.133.46:8080/job/gitops-register-app-cd/buildWithParameters?token=gitops-token'"
     //             }
     //         }
-    //     }
-    // }
+    //    }
+
+    
+        stage('Build Trigger CD Automate') {
+            steps {
+                // Use credentials binding to securely inject API token
+                withCredentials([usernamePassword(credentialsId: 'JENKINS_API_TOKEN', usernameVariable: 'JENKINS_USERNAME', passwordVariable: 'JENKINS_API_TOKEN')]) {
+                    sh '''
+                        curl -v -k --user "${JENKINS_USERNAME}:${JENKINS_API_TOKEN}" -X POST -H "cache-control: no-cache" "${JENKINS_URL}/job/gitops-register-app-cd/buildWithParameters?token=gitops-token"
+                    '''
+                }
+            }
+        }
+   
 
 //     post {
 //        failure { 
