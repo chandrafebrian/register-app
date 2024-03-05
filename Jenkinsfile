@@ -91,7 +91,7 @@ pipeline {
           }
        }
 
-       stage("Trigger CD Pipeline") {
+       stage("Trigger CD Automate Pipeline") {
             steps {
                 script {
                     sh "curl -v -k --user chandrajenkinsadmin:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H '34.87.133.46:8080/job/gitops-register-app-cd/buildWithParameters?token=gitops-token'"
