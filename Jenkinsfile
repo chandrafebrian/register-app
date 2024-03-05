@@ -93,24 +93,24 @@ pipeline {
           }
        }
 
-    //    stage("Trigger CD Automate Pipeline") {
-    //         steps {
-    //             script {
-    //                 sh "curl -v -k --user chandrajenkinsadmin:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H '34.87.133.46:8080/job/gitops-register-app-cd/buildWithParameters?token=gitops-token'"
-    //             }
-    //         }
-    //    }
-
-    
-        stage('Build Trigger CD Automate') {
+       stage("Trigger CD Automate Pipeline") {
             steps {
-               script {
-                    sh '''
-                        curl -v -k --user "${JENKINS_USERNAME}:${JENKINS_API_TOKEN}" -X POST -H "cache-control: no-cache" "${JENKINS_URL}/job/gitops-register-app-cd/buildWithParameters?token=gitops-token"
-                    '''
+                script {
+                    sh "curl -v -k --user chandrajenkinsadmin:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' '34.87.133.46:8080/job/gitops-register-app-cd/buildWithParameters?token=gitops-token'"
                 }
             }
-        }
+       }
+
+    
+        // stage('Build Trigger CD Automate') {
+        //     steps {
+        //        script {
+        //             sh '''
+        //                 curl -v -k --user "${JENKINS_USERNAME}:${JENKINS_API_TOKEN}" -X POST -H "cache-control: no-cache" "${JENKINS_URL}/job/gitops-register-app-cd/buildWithParameters?token=gitops-token"
+        //             '''
+        //         }
+        //     }
+        // }
    
 
 //     post {
