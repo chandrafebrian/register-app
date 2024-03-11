@@ -95,7 +95,7 @@ pipeline {
        stage("Trigger CD Automate Pipeline") {
             steps {
                 script {
-                    sh "curl -v -k --user chandrajenkinsadmin:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' '34.142.229.151:8080/job/gitops-register-app-cd/buildWithParameters?token=gitops-token'"
+                    sh "curl -v -k --user chandrajenkinsadmin:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' '34.126.178.67:8080/job/gitops-register-app-cd/buildWithParameters?token=gitops-token'"
                 }
             }
        }
@@ -104,12 +104,12 @@ pipeline {
 //        failure { 
 //              emailext body: '''${SCRIPT, template="groovy-html.template"}''', 
 //                       subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Failed", 
-//                       mimeType: 'text/html',to: "ashfaque.s510@gmail.com"
+//                       mimeType: 'text/html',to: "chandrafebrian99@gmail.com"
 //       }
 //       success {
 //             emailext body: '''${SCRIPT, template="groovy-html.template"}''', 
 //                      subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Successful", 
-//                      mimeType: 'text/html',to: "ashfaque.s510@gmail.com"
+//                      mimeType: 'text/html',to: "chandrafebrian99@gmail.com"
 //       }      
 //    }
     }
