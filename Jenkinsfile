@@ -95,7 +95,7 @@ pipeline {
        stage("Trigger CD Automate Pipeline") {
             steps {
                 script {
-                    sh "curl -v -k --user chandrajenkinsadmin:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' '34.126.178.67:8080/job/gitops-register-app-cd/buildWithParameters?token=gitops-token'"
+                    sh "curl -v -k --user chandrajenkinsadmin:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' '34.142.140.90:8080/job/gitops-register-app-cd/buildWithParameters?token=gitops-token'"
                 }
             }
        }
