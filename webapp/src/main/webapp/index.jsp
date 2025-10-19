@@ -35,6 +35,6 @@
   <br>
   <h1> chandrafebrian99@gmail.com </h1>
   <br>
-  <h1> mini project 2025</h1>
+  <h1> mini project 2025 </h1>
 
 </form>
