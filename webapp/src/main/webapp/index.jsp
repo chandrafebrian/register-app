@@ -27,7 +27,7 @@
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
     <button type="submit" class="register">Register</button>
   </div>
-  <div class="container sign">
+  <div class="new container sign">
     <p>Already have an account? <a href="#">Sign in</a>.</p>
   </div>
 
