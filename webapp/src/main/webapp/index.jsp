@@ -27,7 +27,7 @@
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
     <button type="submit" class="register">Register</button>
   </div>
-  <div class="new container sign">
+  <div class="container sign">
     <p>Already have an account? <a href="#">Sign in</a>.</p>
   </div>
 
@@ -35,6 +35,6 @@
   <br>
   <h1> chandrafebrian99@gmail.com </h1>
   <br>
-  <h1> mini project </h1>
+  <h1> mini project 2025</h1>
 
 </form>
