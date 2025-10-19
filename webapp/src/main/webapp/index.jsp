@@ -1,6 +1,6 @@
 <form action="action_page.php">
   <div class="container">
-    <h1>Project Devops user Register from Chandra-Febrian </h1>
+    <h1>Project Site Reliability Engineer Chandra-Febrian </h1>
     <p>Please fill in this form to create an account.</p>
     <hr>
 
@@ -31,10 +31,10 @@
     <p>Already have an account? <a href="#">Sign in</a>.</p>
   </div>
 
-  <h1> * Devops chandra +++ febrian * </h1>
+  <h1> * Chandra-Febrian * </h1>
   <br>
   <h1> chandrafebrian99@gmail.com </h1>
   <br>
-  <h1> sample project </h1>
+  <h1> mini project </h1>
 
 </form>
