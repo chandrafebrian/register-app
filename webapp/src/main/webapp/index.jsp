@@ -322,7 +322,7 @@
             
             if (password !== confirmPassword) {
                 e.preventDefault();
-                alert('Passwords do not match. Please check and try again.');
+                alert('Passwords do not match. Please check and try again..');
                 return false;
             }
         });
