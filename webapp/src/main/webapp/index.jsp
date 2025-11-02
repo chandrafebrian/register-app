@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -207,13 +208,14 @@
                 padding: 30px 20px;
                 margin: 10px;
             }
-            
+
             .header h1 {
                 font-size: 24px;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="registration-container">
         <div class="header">
@@ -224,44 +226,26 @@
         <form action="action_page.php" method="POST">
             <div class="form-group">
                 <label for="fullName">Full Name</label>
-                <input type="text" 
-                       class="form-control" 
-                       placeholder="Enter your full name" 
-                       name="fullName" 
-                       id="fullName" 
-                       required>
+                <input type="text" class="form-control" placeholder="Enter your full name" name="fullName" id="fullName"
+                    required>
             </div>
 
             <div class="form-group">
                 <label for="mobile">Mobile Number</label>
-                <input type="tel" 
-                       class="form-control" 
-                       placeholder="Enter your mobile number" 
-                       name="mobile" 
-                       id="mobile" 
-                       pattern="[0-9]{10,15}"
-                       required>
+                <input type="tel" class="form-control" placeholder="Enter your mobile number" name="mobile" id="mobile"
+                    pattern="[0-9]{10,15}" required>
             </div>
 
             <div class="form-group">
                 <label for="email">Email Address</label>
-                <input type="email" 
-                       class="form-control" 
-                       placeholder="Enter your email address" 
-                       name="email" 
-                       id="email" 
-                       required>
+                <input type="email" class="form-control" placeholder="Enter your email address" name="email" id="email"
+                    required>
             </div>
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" 
-                       class="form-control" 
-                       placeholder="Create a secure password" 
-                       name="password" 
-                       id="password" 
-                       minlength="8"
-                       required>
+                <input type="password" class="form-control" placeholder="Create a secure password" name="password"
+                    id="password" minlength="8" required>
                 <div class="password-requirements">
                     Password must be at least 8 characters long
                 </div>
@@ -269,18 +253,14 @@
 
             <div class="form-group">
                 <label for="confirmPassword">Confirm Password</label>
-                <input type="password" 
-                       class="form-control" 
-                       placeholder="Confirm your password" 
-                       name="confirmPassword" 
-                       id="confirmPassword" 
-                       required>
+                <input type="password" class="form-control" placeholder="Confirm your password" name="confirmPassword"
+                    id="confirmPassword" required>
             </div>
 
             <div class="terms">
-                By creating an account, you agree to our 
-                <a href="#" onclick="alert('Terms & Privacy policy would be displayed here')">Terms of Service</a> 
-                and 
+                By creating an account, you agree to our
+                <a href="#" onclick="alert('Terms & Privacy policy would be displayed here')">Terms of Service</a>
+                and
                 <a href="#" onclick="alert('Privacy policy would be displayed here')">Privacy Policy</a>
             </div>
 
@@ -292,11 +272,12 @@
         </div>
 
         <div class="signin-link">
-            <p>Already have an account? <a href="#" onclick="alert('Sign in page would be displayed here')">Sign In</a></p>
+            <p>Already have an account? <a href="#" onclick="alert('Sign in page would be displayed here')">Sign In</a>
+            </p>
         </div>
 
         <div class="footer-info">
-            <div class="project-title">Chandra Febrian - SRE Project</div>
+            <div class="project-title">Chandra Febrian - SRE Projects</div>
             <div class="contact-info">chandrafebrian99@gmail.com</div>
             <div class="contact-info">Mini Project 2025</div>
         </div>
@@ -304,10 +285,10 @@
 
     <script>
         // Password confirmation validation
-        document.getElementById('confirmPassword').addEventListener('input', function() {
+        document.getElementById('confirmPassword').addEventListener('input', function () {
             const password = document.getElementById('password').value;
             const confirmPassword = this.value;
-            
+
             if (password !== confirmPassword) {
                 this.setCustomValidity('Passwords do not match');
             } else {
@@ -316,10 +297,10 @@
         });
 
         // Form submission enhancement
-        document.querySelector('form').addEventListener('submit', function(e) {
+        document.querySelector('form').addEventListener('submit', function (e) {
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
-            
+
             if (password !== confirmPassword) {
                 e.preventDefault();
                 alert('Passwords do not match. Please check and try again..');
@@ -328,4 +309,5 @@
         });
     </script>
 </body>
+
 </html>
