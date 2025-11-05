@@ -219,7 +219,7 @@
 <body>
     <div class="registration-container">
         <div class="header">
-            <h1>Site Reliability Engineer Project</h1>
+            <h1>Site Reliability Engineer</h1>
             <p>Create your professional account to get started</p>
         </div>
 
