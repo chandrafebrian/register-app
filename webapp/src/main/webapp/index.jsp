@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Reliability Engineer Registration Project</title>
+    <title>Site Reliability Engineer Registration</title>
     <style>
         * {
             margin: 0;
@@ -219,7 +219,7 @@
 <body>
     <div class="registration-container">
         <div class="header">
-            <h1>Site Reliability Engineer</h1>
+            <h1>Site Reliability Engineer Project</h1>
             <p>Create your professional account to get started</p>
         </div>
 
