@@ -39,21 +39,15 @@ pipeline {
            }
        }
 
-       stage('SonarQube Analysis') {
-            steps {
-                script {
-                    withSonarQubeEnv('SonarQube-Server') {
-                        sh '''
-                            JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64 \
-                            MAVEN_JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64 \
-                            mvn sonar:sonar \
-                                -Dsonar.projectKey=register-app-ci \
-                                -Dsonar.host.url=http://35.213.158.200:9000
-                        '''
-                    }
-                }
-            }
-}
+       stage("SonarQube Analysis"){
+           steps {
+	           script {
+		        withSonarQubeEnv(credentialsId: 'jenkins-sonar-token') { 
+                        sh "mvn sonar:sonar"
+		        }
+	           }	
+           }
+       }
 
     //    stage("Quality Gate"){
     //        steps {
