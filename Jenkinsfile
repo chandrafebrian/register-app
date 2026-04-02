@@ -41,12 +41,17 @@ pipeline {
 
        stage("SonarQube Analysis"){
            steps {
-	           script {
-		        withSonarQubeEnv(credentialsId: 'jenkins-sonar-token') { 
+                script {
+
+                    env.JAVA_HOME = tool('java17chandra')
+                    env.MAVEN_JAVA_HOME = tool('java17chandra')
+                    env.PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
+                    
+                    withSonarQubeEnv(credentialsId: 'jenkins-sonar-token') { 
                         sh "mvn sonar:sonar"
-		        }
-	           }	
-           }
+                    }
+                }
+            }
        }
 
     //    stage("Quality Gate"){
