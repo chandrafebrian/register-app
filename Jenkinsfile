@@ -83,10 +83,8 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        docker run --rm \
-                            -v /var/run/docker.sock:/var/run/docker.sock \
-                            aquasec/trivy:0.50.0 \
-                            image chandraf80/register-app-pipeline:latest \
+                        trivy image \
+                            chandraf80/register-app-pipeline:latest \
                             --no-progress \
                             --scanners vuln \
                             --exit-code 0 \
