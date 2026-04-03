@@ -79,7 +79,7 @@ pipeline {
             }
         }
 
-        tage("Trivy Scan") {
+        stage("Trivy Scan") {
             steps {
                 script {
                     sh '''
