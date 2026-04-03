@@ -4,15 +4,16 @@ pipeline {
         jdk 'java17chandra'
         maven 'maven3chandra'
     }
-    environment {
-	        APP_NAME = "register-app-pipeline"
-            RELEASE = "1.0.0"
-            DOCKER_USER = "chandraf80"
-            DOCKER_PASS = 'dockerhub'
-            IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
-            IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
-	        // JENKINS_API_TOKEN = credentials("JENKINS_API_TOKEN")
+     environment {
+        APP_NAME = "register-app-pipeline"
+        RELEASE = "1.0.0"
+        // ✅ Gunakan credentialsId, bukan string literal
+        DOCKER_USER = "chandraf80"
+        IMAGE_NAME = "${DOCKER_USER}/${APP_NAME}"
+        IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
+        // JENKINS_API_TOKEN = credentials("JENKINS_API_TOKEN")
     }
+    
     stages{
         stage("Cleanup Workspace"){
                 steps {
@@ -66,18 +67,17 @@ pipeline {
         stage("Build & Push Docker Image") {
             steps {
                 script {
-                    docker.withRegistry('',DOCKER_PASS) {
-                        docker_image = docker.build "${IMAGE_NAME}"
-                    }
-
-                    docker.withRegistry('',DOCKER_PASS) {
+                    // ✅ FIX #1: Include tag saat build
+                    docker_image = docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
+                    
+                    // ✅ FIX #2: Gunakan credentialsId yang benar
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
                         docker_image.push("${IMAGE_TAG}")
                         docker_image.push('latest')
                     }
                 }
             }
-
-       }
+        }
 
        stage("Trivy Scan") {
             steps {
@@ -86,8 +86,9 @@ pipeline {
                         echo "=== Running Trivy Security Scan ==="
                         trivy --version
                         
+                        // ✅ FIX #3: Gunakan variable, bukan hardcoded
                         trivy image \
-                            chandraf80/register-app-pipeline:latest \
+                            ${IMAGE_NAME}:latest \
                             --no-progress \
                             --scanners vuln \
                             --exit-code 0 \
