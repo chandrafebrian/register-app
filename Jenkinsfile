@@ -79,15 +79,16 @@ pipeline {
             }
         }
 
-       stage("Trivy Scan") {
+        stage("Trivy Scan") {
             steps {
                 script {
                     sh '''
                         echo "=== Running Trivy Security Scan ==="
-                        trivy --version
                         
-                        // ✅ FIX #3: Gunakan variable, bukan hardcoded
-                        trivy image \
+                        # ✅ Gunakan absolute path ke trivy binary
+                        /home/chandrafebrian/bin/trivy --version
+                        
+                        /home/chandrafebrian/bin/trivy image \
                             ${IMAGE_NAME}:latest \
                             --no-progress \
                             --scanners vuln \
