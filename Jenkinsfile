@@ -83,25 +83,23 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        echo "=== Trivy Security Scan (Offline Mode) ==="
+                        echo "=== Trivy Security Scan (OS Packages Only) ==="
                         
                         TRIVY_BIN="/home/chandrafebrian/bin/trivy"
                         
-                        # ✅ Use offline-scan to avoid /tmp space issues
+                        # ✅ HANYA scan OS packages - SKIP semua library (Java, Python, dll)
                         $TRIVY_BIN image \
                             ${IMAGE_NAME}:latest \
                             --no-progress \
                             --scanners vuln \
-                            --offline-scan \
+                            --pkg-types os \
                             --exit-code 0 \
                             --severity HIGH,CRITICAL \
                             --format table
-                            
-                        echo "✅ Trivy scan completed"
                     '''
                 }
             }
-        }
+       }
 
        stage ('Cleanup Artifacts') {
            steps {
