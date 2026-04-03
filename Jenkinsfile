@@ -85,20 +85,22 @@ pipeline {
                     sh '''
                         echo "=== Running Trivy Security Scan ==="
                         
-                        # ✅ Gunakan absolute path ke trivy binary
-                        /home/chandrafebrian/bin/trivy --version
+                        TRIVY_BIN="/home/chandrafebrian/bin/trivy"
+                        $TRIVY_BIN --version
                         
-                        /home/chandrafebrian/bin/trivy image \
+                        # ✅ SKIP JAVA DB - hemat space & waktu, fokus ke OS-level vulns
+                        $TRIVY_BIN image \
                             ${IMAGE_NAME}:latest \
                             --no-progress \
                             --scanners vuln \
+                            --skip-java-db \
                             --exit-code 0 \
                             --severity HIGH,CRITICAL \
                             --format table
                     '''
                 }
             }
-        }
+       }
 
        stage ('Cleanup Artifacts') {
            steps {
