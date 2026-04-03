@@ -83,13 +83,8 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        echo "=== Running Trivy Security Scan ==="
-                        
-                        TRIVY_BIN="/home/chandrafebrian/bin/trivy"
-                        $TRIVY_BIN --version
-                        
-                        # ✅ SKIP JAVA DB - hemat space & waktu, fokus ke OS-level vulns
-                        $TRIVY_BIN image \
+                        echo "=== Trivy Security Scan ==="
+                        /home/chandrafebrian/bin/trivy image \
                             ${IMAGE_NAME}:latest \
                             --no-progress \
                             --scanners vuln \
@@ -100,7 +95,7 @@ pipeline {
                     '''
                 }
             }
-       }
+        }
 
        stage ('Cleanup Artifacts') {
            steps {
