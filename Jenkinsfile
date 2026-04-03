@@ -83,6 +83,9 @@ pipeline {
             steps {
                 script {
                     sh '''
+                        echo "=== Running Trivy Security Scan ==="
+                        trivy --version
+                        
                         trivy image \
                             chandraf80/register-app-pipeline:latest \
                             --no-progress \
