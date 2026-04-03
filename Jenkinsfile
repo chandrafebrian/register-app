@@ -79,19 +79,25 @@ pipeline {
             }
         }
 
-        stage("Trivy Scan") {
+        tage("Trivy Scan") {
             steps {
                 script {
                     sh '''
-                        echo "=== Trivy Security Scan ==="
-                        /home/chandrafebrian/bin/trivy image \
+                        echo "=== Trivy Security Scan (Offline Mode) ==="
+                        
+                        TRIVY_BIN="/home/chandrafebrian/bin/trivy"
+                        
+                        # ✅ Use offline-scan to avoid /tmp space issues
+                        $TRIVY_BIN image \
                             ${IMAGE_NAME}:latest \
                             --no-progress \
                             --scanners vuln \
-                            --skip-java-db \
+                            --offline-scan \
                             --exit-code 0 \
                             --severity HIGH,CRITICAL \
                             --format table
+                            
+                        echo "✅ Trivy scan completed"
                     '''
                 }
             }
