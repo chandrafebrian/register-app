@@ -280,7 +280,7 @@
         <div class="footer-info">
             <div class="project-title">Chandra Febrian - SRE Project</div>
             <div class="contact-info">chandrafebrian99@gmail.com</div>
-            <div class="contact-info">Mini Project 2026</div>
+            <div class="contact-info">Mini Projects 2026</div>
         </div>
     </div>
 
