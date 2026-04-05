@@ -11,7 +11,7 @@ pipeline {
         DOCKER_USER = "chandraf80"
         IMAGE_NAME = "${DOCKER_USER}/${APP_NAME}"
         IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
-        // JENKINS_API_TOKEN = credentials("JENKINS_API_TOKEN")
+        JENKINS_API_TOKEN = credentials("JENKINS_API_TOKEN")
     }
     
     stages{
@@ -110,13 +110,13 @@ pipeline {
           }
        }
 
-    //    stage("Trigger CD Automate Pipeline") {
-    //         steps {
-    //             script {
-    //                 sh "curl -v -k --user chandra:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' '35.213.144.36:8080/job/gitops-register-app-cd/buildWithParameters?token=gitops-token'"
-    //             }
-    //         }
-    //    }
+       stage("Trigger CD Automate Pipeline") {
+            steps {
+                script {
+                    sh "curl -v -k --user chandra:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' '34.142.245.89:8080/job/gitops-register-app-cd/buildWithParameters?token=gitops-token'"
+                }
+            }
+       }
 
         // post {
         //     failure { 
