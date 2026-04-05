@@ -7,7 +7,6 @@ pipeline {
      environment {
         APP_NAME = "register-app-pipeline"
         RELEASE = "1.0.0"
-        // ✅ Gunakan credentialsId, bukan string literal
         DOCKER_USER = "chandraf80"
         IMAGE_NAME = "${DOCKER_USER}/${APP_NAME}"
         IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
@@ -67,10 +66,7 @@ pipeline {
         stage("Build & Push Docker Image") {
             steps {
                 script {
-                    // ✅ FIX #1: Include tag saat build
                     docker_image = docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
-                    
-                    // ✅ FIX #2: Gunakan credentialsId yang benar
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
                         docker_image.push("${IMAGE_TAG}")
                         docker_image.push('latest')
@@ -117,18 +113,5 @@ pipeline {
                 }
             }
        }
-
-        // post {
-        //     failure { 
-        //             emailext body: '''${SCRIPT, template="groovy-html.template"}''', 
-        //                     subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Failed", 
-        //                     mimeType: 'text/html',to: "chandrafebrian99@gmail.com"
-        //     }
-        //     success {
-        //             emailext body: '''${SCRIPT, template="groovy-html.template"}''', 
-        //                     subject: "${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} - Successful", 
-        //                     mimeType: 'text/html',to: "chandrafebrian99@gmail.com"
-        //     }      
-        // }
     }
 }
