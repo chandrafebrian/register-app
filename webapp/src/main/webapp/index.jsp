@@ -221,6 +221,7 @@
         <div class="header">
             <h1>Site Reliability Engineer</h1>
             <p>Create your professional account to get started</p>
+            <div class="contact-info">chandrafebrian99@gmail.com</div>
         </div>
 
         <form action="action_page.php" method="POST">
@@ -279,7 +280,7 @@
         <div class="footer-info">
             <div class="project-title">Chandra Febrian - SRE Project</div>
             <div class="contact-info">chandrafebrian99@gmail.com</div>
-            <div class="contact-info">Mini Project 2025</div>
+            <div class="contact-info">Mini Project 2026</div>
         </div>
     </div>
 
