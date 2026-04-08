@@ -273,7 +273,7 @@
         </div>
 
         <div class="signin-link">
-            <p>Already have an account? <a href="#" onclick="alert('Sign in page would be displayed here')">Sign In</a>
+            <p>Already have an accounts? <a href="#" onclick="alert('Sign in page would be displayed here')">Sign In</a>
             </p>
         </div>
 
