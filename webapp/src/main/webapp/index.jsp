@@ -220,7 +220,7 @@
     <div class="registration-container">
         <div class="header">
             <h1>Site Reliability Engineer</h1>
-            <p>Create your professional account to get started</p>
+            <p>Create your professional accounts to get started</p>
             <div class="contact-info">chandrafebrian99@gmail.com</div>
         </div>
 
