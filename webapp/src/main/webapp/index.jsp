@@ -253,7 +253,7 @@
             </div>
 
             <div class="form-group">
-                <label for="confirmPasswords">Confirm Password</label>
+                <label for="confirmPassword">Confirm Password</label>
                 <input type="password" class="form-control" placeholder="Confirm your password" name="confirmPassword"
                     id="confirmPassword" required>
             </div>
