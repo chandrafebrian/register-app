@@ -227,7 +227,7 @@
         <form action="action_page.php" method="POST">
             <div class="form-group">
                 <label for="fullName">Full Name</label>
-                <input type="text" class="form-control" placeholder="Enter your full names" name="fullName"
+                <input type="text" class="form-control" placeholder="Enter your full namess" name="fullName"
                     id="fullName" required>
             </div>
 
